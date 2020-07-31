@@ -3,9 +3,8 @@
 $CONFIG = '{"lang":"de","error_reporting":false,"show_hidden":false,"hide_Cols":false,"calc_folder":false}';
 
 /**
- * H3K | Tiny File Manager V2.4.3
- * CCP Programmers | ccpprogrammers@gmail.com
- * https://tinyfilemanager.github.io
+ * WerwolfMedia | CONSILIUM V.0.1.0
+ * https://werwolf.media
  */
 
 //TFM version
@@ -20,7 +19,6 @@ if (is_readable($config_file)) {
     @include($config_file);
 }
 
-// --- EDIT BELOW CAREFULLY OR DO NOT EDIT AT ALL ---
 
 // max upload file size
 define('MAX_UPLOAD_SIZE', $max_upload_size_bytes);
@@ -29,7 +27,7 @@ define('FM_THEME', $theme);
 
 // private key and session name to store to the session
 if ( !defined( 'FM_SESSION_ID')) {
-    define('FM_SESSION_ID', 'filemanager');
+    define('FM_SESSION_ID', 'CONSILIUM');
 }
 
 // Configuration
