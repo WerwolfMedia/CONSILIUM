@@ -9,14 +9,11 @@
             <img src="./static/logo-white.svg" alt="Tabler" class="navbar-brand-image">
           </a>
           <div class="navbar-nav flex-row order-md-last">
-            <div class="nav-item dropdown d-none d-md-flex mr-3">
-              <a href="logout.php" class="btn btn-sm btn-outline-primary">Abmelden</a>
-            </div>
             <div class="nav-item dropdown">
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-toggle="dropdown">
                 <span class="avatar" style="background-image: url(./static/avatars/000m.jpg)"></span>
                 <div class="d-none d-xl-block pl-2">
-                  <div><?php echo $_SESSION['vorname'];echo " ";echo $_SESSION['nachname'] ?></div>
+                  <div><?php echo $_SESSION['vorname'];echo " ";echo $_SESSION['nachname'] ?> <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">  <polyline id="svg_1" stroke-width="2" stroke-miterlimit="10" stroke="#ffffff" points="21,8.5 12,17.5 3,8.5 " fill="none"/></svg></div>
                   <div class="mt-1 small text-muted"></div>
                 </div>
               </a>
