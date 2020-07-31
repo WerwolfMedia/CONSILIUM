@@ -34,9 +34,7 @@ if (isset($_SESSION['notification'])) {
   ?>
   hello
   <script>
-    requirejs(["toastr"], function(toastr) {
-      $(function() {
-        // Display a error toast, with a title
+
         toastr.options = {
           "closeButton": true,
           "debug": false,
@@ -55,8 +53,7 @@ if (isset($_SESSION['notification'])) {
           "hideMethod": "fadeOut"
         }
         toastr["<?php echo $_SESSION['notificationtyp']; ?>"]("<?php echo $_SESSION['notification']; ?>", "<?php echo $_SESSION['notificationtitle']; ?>")
-      });
-    });
+
   </script>
 <?php
   unset($_SESSION['notificationtyp']);
