@@ -80,7 +80,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
     <div class="flex-fill d-flex flex-column justify-content-center">
       <div class="container-tight py-6">
         <div class="text-center mb-4">
-            <img src="./static/logo-white.svg" alt="<?php echo $plattform_name;?>">
+            <img src="./static/logo-white.svg" height="40" alt="<?php echo $plattform_name;?>">
         </div>
         <form class="card card-md" method="POST" target="_top" action="login.php">
            <div class="card-body">
@@ -92,6 +92,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
             <div class="mb-2">
               <label class="form-label">
                 Passwort
+                <span class="form-label-description">
+                    Passwort vergessen? Dann hilft <?php echo  $agentur_name;?>!
+                </span>
               </label>
               <div class="input-group input-group-flat">
                 <input type="password" class="form-control" name="password" id="password" placeholder="Passwort">
@@ -104,9 +107,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
             <div class="form-footer">
                   <button type="submit" name="process" class="btn btn-primary btn-block">Anmelden</button>
               </div>
-              <div class="text-center text-muted">
-              Passwort vergessen? Dann hilft <?php echo  $agentur_name;?>!
-              </div>
+
           </div>
         </form>
         <div class="text-center text-muted">
