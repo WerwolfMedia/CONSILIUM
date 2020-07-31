@@ -124,7 +124,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
     <?php
 if (isset($_SESSION['notification'])) {
   ?>
-  hello
+  <?php echo $_SESSION['notificationtyp']; ?>"]("<?php echo $_SESSION['notification']; ?>", "<?php echo $_SESSION['notificationtitle']; ?>
   <script>
         toastr["<?php echo $_SESSION['notificationtyp']; ?>"]("<?php echo $_SESSION['notification']; ?>", "<?php echo $_SESSION['notificationtitle']; ?>");
         toastr.options = {
