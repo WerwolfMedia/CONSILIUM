@@ -25,8 +25,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/menu.php';
               </div>
             </div>
           </div>
-          <div class="my-3 my-md-5">
-    <div class="container">
     <form action="support.php" method="post">
         <div class="row">
             <div class="col-lg-12">
@@ -90,8 +88,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/menu.php';
             </div>
         </div>
         </form>
-    </div>
-</div>
+
+
 
 </div>
         </div>
