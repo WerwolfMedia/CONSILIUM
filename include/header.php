@@ -32,6 +32,7 @@
 <?php
 if (isset($_SESSION['notification'])) {
   ?>
+  hello
   <script>
     requirejs(["toastr"], function(toastr) {
       $(function() {
