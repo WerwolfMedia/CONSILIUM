@@ -357,7 +357,7 @@ if (isset($_POST['ajax']) && !FM_READONLY) {
         $newLng = $_POST['js-language'];
         fm_get_translations([]);
         if (!array_key_exists($newLng, $lang_list)) {
-            $newLng = 'de';
+            $newLng = 'en';
         }
 
         $erp = isset($_POST['js-error-report']) && $_POST['js-error-report'] == "true" ? true : false;

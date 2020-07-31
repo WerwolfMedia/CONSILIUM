@@ -39,10 +39,10 @@ $use_highlightjs = true;
 
 // highlight.js style
 // for dark theme use 'ir-black'
-$highlightjs_style = 'vs';
+$highlightjs_style = 'ir-black';
 
 // Enable ace.js (https://ace.c9.io/) on view's page
-$edit_files = true;
+$edit_files = false;
 
 // Default timezone for date() and time()
 // Doc - http://php.net/manual/en/timezones.php
