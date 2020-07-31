@@ -80,9 +80,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
         <div class="text-center mb-4">
           <img src="./static/logo.svg" height="36" alt="">
         </div>
-        <form class="card card-md" action="." method="get">
-          <div class="card-body">
-            <h2 class="mb-5 text-center">Anmelden an <?php echo $projektname; ?></h2>
+        <form class="card card-md" method="POST" target="_top" action="login.php">
+           <div class="card-body">
+            <h2 class="mb-5 text-center"><?php echo $projektname; ?></h2>
             <div class="mb-3">
               <label class="form-label">Benutzername</label>
               <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Benutzername">
@@ -91,7 +91,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
               <label class="form-label">
                 Passwort
                 <span class="form-label-description">
-                  <a href="./forgot-password.html">I forgot password</a>
+                  <a href="./forgot-password.html">Passwort vergessen ? </a>
                 </span>
               </label>
               <div class="input-group input-group-flat">
