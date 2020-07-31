@@ -48,6 +48,17 @@
                     </span>
                   </a>
                 </li>
+                <?php if ($_SESSION['grouprights'] <= "5") { ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="./support.php" >
+                    <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="fa fa-medkit"></i>
+                    </span>
+                    <span class="nav-link-title">
+                      Support
+                    </span>
+                  </a>
+                </li>
+                <?php }; ?>
               </ul>
 <!--                <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
                 <form action="." method="get">
