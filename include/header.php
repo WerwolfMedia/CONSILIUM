@@ -28,34 +28,3 @@
   <?php if (isset($customcss)) echo $customcss; ?>
   <?php if (isset($_SESSION['notification'])) echo "<link href=\"./dist/css/toastr.min.css\" rel=\"stylesheet\"/>"; ?>
 </head>
-<?php
-if (isset($_SESSION['notification'])) {
-  ?>
-  hello
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous">  </script>
-  <script>
-        toastr["<?php echo $_SESSION['notificationtyp']; ?>"]("<?php echo $_SESSION['notification']; ?>", "<?php echo $_SESSION['notificationtitle']; ?>");
-        toastr.options = {
-          "closeButton": true,
-          "debug": false,
-          "newestOnTop": false,
-          "progressBar": true,
-          "positionClass": "toast-bottom-right",
-          "preventDuplicates": true,
-          "onclick": null,
-          "showDuration": "300",
-          "hideDuration": "1000",
-          "timeOut": "10000",
-          "extendedTimeOut": "1000",
-          "showEasing": "swing",
-          "hideEasing": "linear",
-          "showMethod": "fadeIn",
-          "hideMethod": "fadeOut"
-        };
-  </script>
-<?php
-  unset($_SESSION['notificationtyp']);
-  unset($_SESSION['notification']);
-  unset($_SESSION['notificationtitle']);
-}
-?>

@@ -117,9 +117,40 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
     <!-- Libs JS -->
     <script src="./dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./dist/libs/jquery/dist/jquery.slim.min.js"></script>
+    <script src="./dist/js/toastr.min.js">  </script>
+  
     <!-- Tabler Core -->
     <script src="./dist/js/tabler.min.js"></script>
-    
+    <?php
+if (isset($_SESSION['notification'])) {
+  ?>
+  hello
+  <script>
+        toastr["<?php echo $_SESSION['notificationtyp']; ?>"]("<?php echo $_SESSION['notification']; ?>", "<?php echo $_SESSION['notificationtitle']; ?>");
+        toastr.options = {
+          "closeButton": true,
+          "debug": false,
+          "newestOnTop": false,
+          "progressBar": true,
+          "positionClass": "toast-bottom-right",
+          "preventDuplicates": true,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "10000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        };
+  </script>
+<?php
+  unset($_SESSION['notificationtyp']);
+  unset($_SESSION['notification']);
+  unset($_SESSION['notificationtitle']);
+}
+?>
     <script>
       document.body.style.display = "block"
     </script>
