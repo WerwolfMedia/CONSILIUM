@@ -80,7 +80,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
     <div class="flex-fill d-flex flex-column justify-content-center">
       <div class="container-tight py-6">
         <div class="text-center mb-4">
-            <img src="./static/logo-white.svg" alt="<?php echo $plattform_name;?> " class="navbar-brand-image">
+            <img src="./static/logo-white.svg" alt="<?php echo $plattform_name;?>">
         </div>
         <form class="card card-md" method="POST" target="_top" action="login.php">
            <div class="card-body">
