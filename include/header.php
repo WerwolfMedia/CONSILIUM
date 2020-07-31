@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>CONSILIUM | <?php echo $projektname; ?></title>
+    <title>CONSILIUM | <?php echo $plattform_name; ?></title>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <meta name="msapplication-TileColor" content="#206bc4"/>
     <meta name="theme-color" content="#206bc4"/>

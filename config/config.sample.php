@@ -1,28 +1,20 @@
 <?php 
-#Allgemein
-$projektname = "Wurzach bringt's";
-#Projekterreichbarkeit
-$projekttelefonnummer = "07564-9478919";
-$projektvorwahl = "07564";
-$projektemail = "kontakt@wurzach-bringts.de";
-$projekturl = "https://wurzach-bringts.de/";
-#Projektträger
-$projekttraeger = "JRK Bad Wurzach";
-$projekttraegerurl = "https://drk-bad-wurzach.de/";
-#Projektstandort
-$projektlatitude = "47.9";
-$projektlongitude = "9.9";
-$projektstadt = "Bad Wurzach";
-$projektplz = "88410";
-#
-#SMS Versand
-$smswebservicestoken = "";
-#
-#Für Autocomplete der Straßen
-##API iD, API Key hier
-##https://community.algolia.com/places/
-## Radius in KM
-$algoliaAPIiD = "pl9we-demo-ewKHJT9";
-$algoliaAPIKey = "e36072sdsdw--demo--43reds19509e0b8229b";
-$algoliaRadius = "15";
+#Kundenconfig
+$kunde_name = "Gasthaus Mang";
+$kunde_telefonnummer = "07564-123456";
+$kunde_adresse = "Spitalweg 1";
+$kunde_plz = "07564";
+$kunde_ort = "Bad Wurzach";
+$kunde_mail = "kontakt@gasthaus-mang912.de";
+$kunde_impressum = "http://gasthaus-mang912.de/impressum.html";
+$kunde_datenschutz = "http://gasthaus-mang912.de/datenschutz.html";
 
+
+#Plattformconfig
+$plattform_name = "Consilium ".$kundename;
+$plattform_url = "https://wurzach-bringts.de/";
+$plattform_mail = "kontakt@gasthaus-mang912.de";
+
+#Agenturconfig
+$agentur_name = "Werwolf Media";
+$agentur_mail = "support@werwolf.media";

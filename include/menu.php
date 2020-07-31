@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <a href="." class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pr-0 pr-md-3">
-            <img src="./static/logo-white.svg" alt="Tabler" class="navbar-brand-image">
+            <img src="./static/logo-white.svg" alt="<?php echo $plattform_name;?> " class="navbar-brand-image">
           </a>
           <div class="navbar-nav flex-row order-md-last">
             <div class="nav-item dropdown">

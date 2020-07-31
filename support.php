@@ -8,6 +8,31 @@ if (!login_check($sitelevel)) {
   die();
 }
 
+//Wenn abgesendet dann... 
+if ($_SERVER['REQUEST_METHOD'] == "POST")  {
+    $typ = filter_input(INPUT_POST, 'typ', FILTER_SANITIZE_STRING);
+    $betreff = filter_input(INPUT_POST, 'betreff', FILTER_SANITIZE_STRING);
+    $inhalt = filter_input(INPUT_POST, 'inhalt', FILTER_SANITIZE_STRING);
+
+    $empfaenger = $projektemail;
+    $mailbetreff = $typ." - ".$betreff;
+    $from = "From: Backend - ".$projektname." <".$projektemail.">\r\n";
+    $from .= "Reply-To: ".$projektemail."\r\n";
+    $from .= "Content-Type: text/html\r\n";
+    $text = "<h2 style='text-align: left; padding-left: 90px;'><strong>Neue Support-Anfrage von .$projektname.</strong></h2>
+    <hr />
+    <p><strong>Absender:</strong></p>
+    <p>".$_SESSION['name']."</p>
+    <p><strong>Anfragetyp:</strong></p>
+    <p>".$typ."</p>
+    <p><strong>Betreff:</strong></p>
+    <p>".$betreff."</p>
+    <p><strong>Inhalt:</strong></p>
+    <p>".$inhalt."</p>";
+    mail($empfaenger, $mailbetreff, $text, $from);
+    notification("success","Anfrage abgesendet!","Wir versuchen dies schnellstmöglich anzupassen / Sie zu kontaktieren!");
+}
+
 include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/include/menu.php';
 

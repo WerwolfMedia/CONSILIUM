@@ -80,11 +80,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
     <div class="flex-fill d-flex flex-column justify-content-center">
       <div class="container-tight py-6">
         <div class="text-center mb-4">
-          <img src="./static/logo.svg" height="36" alt="">
+            <img src="./static/logo-white.svg" alt="<?php echo $plattform_name;?> " class="navbar-brand-image">
         </div>
         <form class="card card-md" method="POST" target="_top" action="login.php">
            <div class="card-body">
-            <h2 class="mb-5 text-center"><?php echo $projektname; ?></h2>
+            <h2 class="mb-5 text-center"><?php echo $plattform_name;?></h2>
             <div class="mb-3">
               <label class="form-label">Benutzername</label>
               <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Benutzername">
@@ -92,9 +92,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
             <div class="mb-2">
               <label class="form-label">
                 Passwort
-                <span class="form-label-description">
-                  <a href="./forgot-password.html">Passwort vergessen ? </a>
-                </span>
               </label>
               <div class="input-group input-group-flat">
                 <input type="password" class="form-control" name="password" id="password" placeholder="Passwort">
@@ -110,7 +107,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
           </div>
         </form>
         <div class="text-center text-muted">
-        Du besitzt keinen Zugang - dann wende dich an <?php echo $projektemail ?>
+        Passwort vergessen? Kein Login? Dann hilft <?php echo  $agentur_name;?>!<br>
+        <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item"><a href="<?php echo  $kunde_impressum;?>" class="link-secondary">Datenschutz</a></li>
+                  <li class="list-inline-item"><a href="<?php echo  $kunde_datenschutz;?>" class="link-secondary">Impressum</a></li>
+                </ul>
         </div>
       </div>
     </div>
