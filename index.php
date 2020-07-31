@@ -160,12 +160,12 @@ if($ip_ruleset != 'OFF'){
 if ($use_auth) {
     if (isset($_SESSION[FM_SESSION_ID]['logged'], $auth_users[$_SESSION[FM_SESSION_ID]['logged']])) {
         // Logged
-    } elseif (isset($_POST['fm_usr'], $_POST['fm_pwd'])) {
+    } elseif (isset($_POST['username'], $_POST['current-password'])) {
         // Logging In
         sleep(1);
         if(function_exists('password_verify')) {
-            if (isset($auth_users[$_POST['fm_usr']]) && isset($_POST['fm_pwd']) && password_verify($_POST['fm_pwd'], $auth_users[$_POST['fm_usr']])) {
-                $_SESSION[FM_SESSION_ID]['logged'] = $_POST['fm_usr'];
+            if (isset($auth_users[$_POST['username']]) && isset($_POST['current-password']) && password_verify($_POST['current-password'], $auth_users[$_POST['username']])) {
+                $_SESSION[FM_SESSION_ID]['logged'] = $_POST['username'];
                 fm_set_msg(lng('You are logged in'));
                 fm_redirect(FM_SELF_URL . '?p=');
             } else {
@@ -187,7 +187,7 @@ if ($use_auth) {
                     <div class="card-wrapper">
                         <div class="card fat <?php echo fm_get_theme(); ?>">
                             <div class="card-body">
-                                <form class="form-signin" action="" method="post" autocomplete="off">
+                                <form class="form-signin" action="" method="post" autocomplete="on">
                                     <div class="form-group">
                                        <div class="brand">
                                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" M1008 width="100%" height="80px" viewBox="0 0 238.000000 140.000000" aria-label="H3K Tiny File Manager">
@@ -203,13 +203,13 @@ if ($use_auth) {
                                     </div>
                                     <hr />
                                     <div class="form-group">
-                                        <label for="fm_usr"><?php echo lng('Username'); ?></label>
-                                        <input type="text" class="form-control" id="fm_usr" name="fm_usr" required autofocus>
+                                        <label for="username"><?php echo lng('Username'); ?></label>
+                                        <input type="text" class="form-control" id="username" name="username" required autofocus>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="fm_pwd"><?php echo lng('Password'); ?></label>
-                                        <input type="password" class="form-control" id="fm_pwd" name="fm_pwd" required>
+                                        <label for="current-password"><?php echo lng('Password'); ?></label>
+                                        <input type="password" class="form-control" id="current-password" name="current-password" required>
                                     </div>
 
                                     <div class="form-group">
@@ -226,7 +226,7 @@ if ($use_auth) {
                         </div>
                         <div class="footer text-center">
                             &mdash;&mdash; &copy;
-                            <a href="https://tinyfilemanager.github.io/" target="_blank" class="text-muted" data-version="<?php echo VERSION; ?>">CCP Programmers</a> &mdash;&mdash;
+                            <a href="https://werwolf.media/" target="_blank" class="text-muted" data-version="<?php echo VERSION; ?>">CONSILIUM by WerwolfMedia</a> &mdash;&mdash;
                         </div>
                     </div>
                 </div>
