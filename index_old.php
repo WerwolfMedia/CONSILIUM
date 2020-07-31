@@ -14,7 +14,7 @@ define('VERSION', '0.1.0');
 define('APP_TITLE', 'CONSILIUM');
 
 // if User has the customized config file, try to use it to override the default config above
-$config_file = './config/config.php';
+$config_file = './config/config1.php';
 if (is_readable($config_file)) {
     @include($config_file);
 }
