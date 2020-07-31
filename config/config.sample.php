@@ -20,8 +20,8 @@ $use_auth = true;
 // Users: array('Username' => 'Password', 'Username2' => 'Password2', ...)
 // Generate secure password hash - https://tinyfilemanager.github.io/docs/pwd.html
 $auth_users = array(
-    'user' => '$2y$10$AhPJbjY/2OO1mW6hox.MkuradlBQL4ZcCxufz/WtL9JrRcH8blina', //CMG#tWhVq5
-    'user1' => '$2y$10$AhPJbjY/2OO1mW6hox.MkuradlBQL4ZcCxufz/WtL9JrRcH8blina' //CMG#tWhVq5
+    'user' => '$2y$10$6Rj/4dC43HvqZQu5Pjvnmel06xAwP00Jx6grJAJLMLZxF6/.tz6b2', //PWD: 123
+    'user1' => '$2y$10$6Rj/4dC43HvqZQu5Pjvnmel06xAwP00Jx6grJAJLMLZxF6/.tz6b2' //PWD: 123
 );
 
 //set application theme
@@ -35,7 +35,7 @@ $readonly_users = array(
 );
 
 // Enable highlight.js (https://highlightjs.org/) on view's page
-$use_highlightjs = true;
+$use_highlightjs = false;
 
 // highlight.js style
 // for dark theme use 'ir-black'
@@ -46,15 +46,15 @@ $edit_files = false;
 
 // Default timezone for date() and time()
 // Doc - http://php.net/manual/en/timezones.php
-$default_timezone = 'Etc/UTC'; // UTC
+$default_timezone = 'Europe/Berlin'; // UTC
 
 // Root path for file manager
 // use absolute path of directory i.e: '/var/www/folder' or $_SERVER['DOCUMENT_ROOT'].'/folder'
-$root_path = $_SERVER['DOCUMENT_ROOT'];
+$root_path = $_SERVER['DOCUMENT_ROOT'].'/data';
 
 // Root url for links in file manager.Relative to $http_host. Variants: '', 'path/to/subfolder'
 // Will not working if $root_path will be outside of server document root
-$root_url = '';
+$root_url = '/data';
 
 // Server hostname. Can set manually if wrong
 $http_host = $_SERVER['HTTP_HOST'];
@@ -72,16 +72,16 @@ $datetime_format = 'd.m.y H:i';
 
 // Allowed file extensions for create and rename files
 // e.g. 'txt,html,css,js'
-$allowed_file_extensions = '';
+$allowed_file_extensions = 'pdf';
 
 // Allowed file extensions for upload files
 // e.g. 'gif,png,jpg,html,txt'
-$allowed_upload_extensions = '';
+$allowed_upload_extensions = 'pdf';
 
 // Favicon path. This can be either a full url to an .PNG image, or a path based on the document root.
 // full path, e.g http://example.com/favicon.png
 // local path, e.g images/icons/favicon.png
-$favicon_path = '?img=favicon';
+$favicon_path = '/img/favicon.ico';
 
 // Files and folders to excluded from listing
 // e.g. array('myfile.html', 'personal-folder', '*.php', ...)
@@ -92,7 +92,7 @@ $exclude_items = array();
 // google => View documents using Google Docs Viewer
 // microsoft => View documents using Microsoft Web Apps Viewer
 // false => disable online doc viewer
-$online_viewer = 'google';
+$online_viewer = 'false';
 
 // Sticky Nav bar
 // true => enable sticky header
