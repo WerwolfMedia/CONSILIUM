@@ -118,6 +118,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
     <script src="./dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Tabler Core -->
     <script src="./dist/js/tabler.min.js"></script>
+    <script src="./dist/js/toastr.min.js"></script>
     <script>
       document.body.style.display = "block"
     </script>

@@ -26,13 +26,12 @@
       }
     </style>
   <?php if (isset($customcss)) echo $customcss; ?>
-  <?php if (isset($_SESSION['notification'])) echo "<link href=\"https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css\" rel=\"stylesheet\"/>"; ?>
+  <?php if (isset($_SESSION['notification'])) echo "<link href=\"./dist/css/toastr.min.css\" rel=\"stylesheet\"/>"; ?>
 </head>
 
 <?php
 if (isset($_SESSION['notification'])) {
   ?>
-  heee
   <script>
     requirejs(["toastr"], function(toastr) {
       $(function() {
