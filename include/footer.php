@@ -1,25 +1,26 @@
-</div>
-      <footer class="footer">
-        <div class="container">
-          <div class="row align-items-center flex-row-reverse">
-            <div class="col-auto ml-lg-auto">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                  <ul class="list-inline list-inline-dots mb-0">
-                    <li class="list-inline-item"><a href="#">Dokumentation</a></li>
-                  </ul>
-                </div>
-                <div class="col-auto">
-                  <a href="support.php" target="_blank" class="btn btn-outline-primary btn-sm">Support</a>
-                </div>
+<footer class="footer footer-transparent">
+          <div class="container">
+            <div class="row text-center align-items-center flex-row-reverse">
+              <div class="col-lg-auto ml-lg-auto">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item"><a href="./docs.php" class="link-secondary">Dokumentation</a></li>
+                  <li class="list-inline-item"><a href="./support.php" class="link-secondary">Support</a></li>
+                </ul>
+              </div>
+              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                Copyright © 2019-<?php echo date("Y"); ?> <a href="https://werwolf.media">Werwolf Media</a>. Alle Rechte vorbehalten.
               </div>
             </div>
-            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-              Copyright © 2020 <a href="https://werwolf.media">Werwolf Media</a> In Kooperation mit <a href="<?php echo $projekttraegerurl; ?>"><?php echo $projekttraeger; ?></a>. Alle Rechte vorbehalten.
-            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
+    <!-- Libs JS -->
+    <script src="./dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tabler Core -->
+    <script src="./dist/js/tabler.min.js"></script>
+    <script>
+      document.body.style.display = "block"
+    </script>
   </body>
 </html>
