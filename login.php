@@ -65,12 +65,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   if (login($username, $password) == true) {
     // Login erfolgreich 
-    header("Location: /backend/index.php");
+    header("Location: /index.php");
   } else {
     // Login fehlgeschlagen 
   }
 }
-include_once $_SERVER['DOCUMENT_ROOT'] . '/backend/assets/header.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
 ?>
   
   
