@@ -1,84 +1,123 @@
-<!doctype html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Language" content="en" />
-    <meta name="msapplication-TileColor" content="#2d89ef">
-    <meta name="theme-color" content="#4188c9">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
-    <!-- Generated: 2019-04-04 16:55:45 +0200 -->
-    <title>Login - tabler.github.io - a responsive, flat and full featured admin template</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
-    <script src="./assets/js/require.min.js"></script>
-    <script>
-      requirejs.config({
-          baseUrl: '.'
-      });
-    </script>
-    <!-- Dashboard Core -->
-    <link href="./assets/css/dashboard.css" rel="stylesheet" />
-    <script src="./assets/js/dashboard.js"></script>
-    <!-- c3.js Charts Plugin -->
-    <link href="./assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
-    <script src="./assets/plugins/charts-c3/plugin.js"></script>
-    <!-- Google Maps Plugin -->
-    <link href="./assets/plugins/maps-google/plugin.css" rel="stylesheet" />
-    <script src="./assets/plugins/maps-google/plugin.js"></script>
-    <!-- Input Mask Plugin -->
-    <script src="./assets/plugins/input-mask/plugin.js"></script>
-    <!-- Datatables Plugin -->
-    <script src="./assets/plugins/datatables/plugin.js"></script>
-  </head>
-  <body class="">
-    <div class="page">
-      <div class="page-single">
-        <div class="container">
-          <div class="row">
-            <div class="col col-login mx-auto">
-              <div class="text-center mb-6">
-                <img src="./demo/brand/tabler.svg" class="h-6" alt="">
-              </div>
-              <form class="card" action="" method="post">
-                <div class="card-body p-6">
-                  <div class="card-title">Login to your account</div>
-                  <div class="form-group">
-                    <label class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">
-                      Password
-                      <a href="./forgot-password.html" class="float-right small">I forgot password</a>
-                    </label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" />
-                      <span class="custom-control-label">Remember me</span>
-                    </label>
-                  </div>
-                  <div class="form-footer">
-                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                  </div>
-                </div>
-              </form>
-              <div class="text-center text-muted">
-                Don't have account yet? <a href="./register.html">Sign up</a>
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/include/functions.php';
+$sitelevel = "99";
+if (login_check($sitelevel)) {
+  header("Location: /index.php");
+  die();
+} 
+function login($username, $password)
+{
+  global $mysqli;
+  global $timestamp;
+  $stmt = $mysqli->prepare("SELECT `vorname`, `nachname`, `user_id`, `grouprights`, `hash` FROM `users` WHERE `username` = ? LIMIT 1");
+  $stmt->bind_param('s', $username);
+  $stmt->execute();
+  $stmt->store_result();
+  $stmt->bind_result($vorname, $nachname, $user_id, $grouprights, $hash);
+  $stmt->fetch();
+  if ($stmt->num_rows == 1) {
+  if (password_verify($password, $hash)) {
+    // Passwort ist korrekt!
+    //RandomSessionID erzeuegen und in DB Schreiben
+    $bytes = random_bytes(25);
+    $session_id= bin2hex($bytes);
+    $prep_stmt = "UPDATE `users` SET `session_id`= ?,`lastlogin`= ? WHERE `user_id` = ?";
+    $stmt = $mysqli->prepare($prep_stmt);
+    $stmt->bind_param('ssi',$session_id, $timestamp,$user_id);
+    if (!$stmt->execute()) {
+      //DB Write fehlerhaft
+    }else{
+      //DB Write erfolgreich
+        $stmt->close();
+    }
+    //Speichern der SQL Abfrage in Session
+    $_SESSION['vorname'] = $vorname;
+    $_SESSION['nachname'] = $nachname;
+    $_SESSION['name'] = $vorname." ".$nachname;
+    $_SESSION['grouprights'] = $grouprights;
+    $user_id = preg_replace("/[^0-9]+/", "", $user_id);
+    $_SESSION['user_id'] = $user_id;
+    // Hole den user-agent string des Benutzers.
+    $user_browser = $_SERVER['HTTP_USER_AGENT'];
+    //Login String anhand Session ID aus DB und User Agent Kennung Hashen und in Session speichern
+    $_SESSION['login_string'] = hash('sha512', $session_id . $user_browser);
+    //Ins LOG schreiben
+    logging("Login Erfolg - '".$username."' erfolgreich ");
+    //Function als Login erfolgreich zurück geben
+    return true;
+  }else{
+    //Kennwort falsch
+    notification("error","Login fehlgeschlagen!","Dein Nutzername oder dein Passwort ist ungültig. Probiere es nochmals oder wende dich an den Support!");
+    logging("Login Fehler - '".$username."' falsches Passwort");
+    return false;
+  }
+  }else{
+  //Kein User 
+  notification("error","Login fehlgeschlagen!","Dein Nutzername oder dein Passwort ist ungültig. Probiere es nochmals oder wende dich an den Support!");
+  return false;
+  }
+};
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+  $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+  if (login($username, $password) == true) {
+    // Login erfolgreich 
+    header("Location: /backend/index.php");
+  } else {
+    // Login fehlgeschlagen 
+  }
+}
+include_once $_SERVER['DOCUMENT_ROOT'] . '/backend/assets/header.php';
+?>
+  
+  
+  <body class="antialiased theme-dark border-top-wide border-primary d-flex flex-column">
+    <div class="flex-fill d-flex flex-column justify-content-center">
+      <div class="container-tight py-6">
+        <div class="text-center mb-4">
+          <img src="./static/logo.svg" height="36" alt="">
+        </div>
+        <form class="card card-md" action="." method="get">
+          <div class="card-body">
+            <h2 class="mb-5 text-center">Anmelden an <?php echo $projektname; ?></h2>
+            <div class="mb-3">
+              <label class="form-label">Benutzername</label>
+              <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Benutzername">
+            </div>
+            <div class="mb-2">
+              <label class="form-label">
+                Passwort
+                <span class="form-label-description">
+                  <a href="./forgot-password.html">I forgot password</a>
+                </span>
+              </label>
+              <div class="input-group input-group-flat">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Passwort">
+                <span class="input-group-text">
+                  <a href="#" class="link-secondary" title="Show password" data-toggle="tooltip"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="2" /><path d="M2 12l1.5 2a11 11 0 0 0 17 0l1.5 -2" /><path d="M2 12l1.5 -2a11 11 0 0 1 17 0l1.5 2" /></svg>
+                  </a>
+                </span>
               </div>
             </div>
+            <div class="form-footer">
+                  <button type="submit" name="process" class="btn btn-primary btn-block">Anmelden</button>
+              </div>
           </div>
+        </form>
+        <div class="text-center text-muted">
+        Du besitzt keinen Zugang - dann wende dich an <?php echo $projektemail ?>
         </div>
       </div>
     </div>
+    <!-- Libs JS -->
+    <script src="./dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tabler Core -->
+    <script src="./dist/js/tabler.min.js"></script>
+    <script>
+      document.body.style.display = "block"
+    </script>
   </body>
 </html>
