@@ -11,7 +11,7 @@ $kunde_datenschutz = "http://gasthaus-mang912.de/datenschutz.html";
 
 
 #Plattformconfig
-$plattform_name = "Consilium ".$kundename;
+$plattform_name = "Consilium ".$kunde_name;
 $plattform_url = "https://wurzach-bringts.de/";
 $plattform_mail = "kontakt@gasthaus-mang912.de";
 

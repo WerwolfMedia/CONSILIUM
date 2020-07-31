@@ -104,10 +104,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/include/header.php';
             <div class="form-footer">
                   <button type="submit" name="process" class="btn btn-primary btn-block">Anmelden</button>
               </div>
+              <div class="text-center text-muted">
+              Passwort vergessen? Dann hilft <?php echo  $agentur_name;?>!
+              </div>
           </div>
         </form>
         <div class="text-center text-muted">
-        Passwort vergessen? Kein Login? Dann hilft <?php echo  $agentur_name;?>!<br>
         <ul class="list-inline list-inline-dots mb-0">
                   <li class="list-inline-item"><a href="<?php echo  $kunde_impressum;?>" class="link-secondary">Datenschutz</a></li>
                   <li class="list-inline-item"><a href="<?php echo  $kunde_datenschutz;?>" class="link-secondary">Impressum</a></li>
