@@ -28,13 +28,12 @@
   <?php if (isset($customcss)) echo $customcss; ?>
   <?php if (isset($_SESSION['notification'])) echo "<link href=\"./dist/css/toastr.min.css\" rel=\"stylesheet\"/>"; ?>
 </head>
-
 <?php
 if (isset($_SESSION['notification'])) {
   ?>
   hello
   <script>
-
+        toastr["<?php echo $_SESSION['notificationtyp']; ?>"]("<?php echo $_SESSION['notification']; ?>", "<?php echo $_SESSION['notificationtitle']; ?>");
         toastr.options = {
           "closeButton": true,
           "debug": false,
@@ -51,9 +50,7 @@ if (isset($_SESSION['notification'])) {
           "hideEasing": "linear",
           "showMethod": "fadeIn",
           "hideMethod": "fadeOut"
-        }
-        toastr["<?php echo $_SESSION['notificationtyp']; ?>"]("<?php echo $_SESSION['notification']; ?>", "<?php echo $_SESSION['notificationtitle']; ?>")
-
+        };
   </script>
 <?php
   unset($_SESSION['notificationtyp']);
